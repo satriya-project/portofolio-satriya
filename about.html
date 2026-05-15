@@ -111,10 +111,14 @@
 src="about.js">
 
 </script>
-\<audio id="backgroundMusic" loop>
-    <source src="musik.mp4" type="audio/mpeg">
-    Your browser does not support the audio element.
-</script>
+
+<audio id="music" loop>
+  <source src="musik.mp4" type="audio/mp4">
+</audio>
+
+<button onclick="document.getElementById('music').play()">
+  Play Musik
+</button>
 
 </body>
 
