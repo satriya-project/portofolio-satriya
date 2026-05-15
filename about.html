@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="about.css">
-  
+
 
 
   <title>About me</title>
@@ -14,16 +14,16 @@
 <body>
 
   <nav>
-        <div class="logo">aousmawes<span>.</span></div>
+    <div class="logo">aousmawes<span>.</span></div>
 
-        
-        <div class="menu">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="project.html">Project</a>
-            <a href="#">Contact</a>
-        </div>
-    </nav>
+
+    <div class="menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="project.html">Project</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
 
 
   <!-- BACKGROUND -->
@@ -72,8 +72,10 @@
         <img src="foto17.jpg">
 
         <div class="caption">
-          <h3>Masa Kecil</h3>
-          <p>juara 1 saat usia 14</p>
+          <h3>MASA KECIL</h3>
+          <p>Juara 1 saat umur masih 14 tahun dan terus
+            berkembang jadi lebih baik
+          </p>
         </div>
       </div>
 
@@ -81,8 +83,10 @@
         <img src="foto0.webp">
 
         <div class="caption">
-          <h3>Belajar Coding</h3>
-          <p>mulai tertarik.</p>
+          <h3>THIS IS MY CODING</h3>
+          <p>Belajar dengan tenang,
+            silence over noise
+          </p>
         </div>
       </div>
 
@@ -90,8 +94,9 @@
         <img src="foto10.jpg">
 
         <div class="caption">
-          <h3>Gaming</h3>
-          <p>Suka bermain game dan teknologi.</p>
+          <h3>ME </h3>
+          <p>Shut up you just fokus on yourself without
+            critizing me.</p>
         </div>
       </div>
 
@@ -107,34 +112,48 @@
     </section>
 
   </div>
-<script 
-src="about.js">
+  <script src="about.js">
 
-</script>
+  </script>
 
-<audio id="music" loop>
-  <source src="musik.mp4" type="audio/mp4">
-</audio>
+  <script>
+    function setupMusic() {
+      const music = document.getElementById('backgroundMusic');
 
-<script>
-const music = document.getElementById("music");
+      const isMusicPlaying = localStorage.getItem('musicPlaying') === 'true';
+      const musicCurrentTime = localStorage.getItem('musicCurrentTime') || 0;
 
-// lanjutkan posisi kalau ada
-if (localStorage.getItem("musicTime")) {
-  music.currentTime = localStorage.getItem("musicTime");
-}
+      if (isMusicPlaying) {
+        music.currentTime = parseFloat(musicCurrentTime);
+      }
 
-// simpan posisi tiap detik
-setInterval(() => {
-  localStorage.setItem("musicTime", music.currentTime);
-}, 1000);
+      music.addEventListener('play', () => {
+        localStorage.setItem('musicPlaying', 'true');
+      });
 
-// play saat klik
-document.addEventListener("click", () => {
-  music.play();
-}, { once: true });
-</script>
+      music.addEventListener('pause', () => {
+        localStorage.setItem('musicPlaying', 'false');
+      });
 
+      setInterval(() => {
+        localStorage.setItem('musicCurrentTime', music.currentTime);
+      }, 1000);
+
+      document.addEventListener('click', function startMusic() {
+        music.play().catch(error => {
+          console.log('Autoplay prevented', error);
+        });
+        document.removeEventListener('click', startMusic);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', setupMusic);
+  </script>
+
+  <audio id="backgroundMusic" loop>
+    <source src="musik.mp4" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 </body>
 
 </html>

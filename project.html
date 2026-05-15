@@ -2,6 +2,7 @@
 
     <div class="project-title">
         <link rel="stylesheet" href="project.css">
+        <head
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>project
         </title>
@@ -9,112 +10,146 @@
         <h1>
             <spain class="typing">
 
-            </spain></h1>
+            </spain>
+        </h1>
 
     </div>
-    <nav>
-        <div class="logo">aousmawes<span>.</span></div>
+</head>
 
-        
+    <body>
+        <nav>
+            <div class="logo">aousmawes<span>.</span></div>
 
-        <div class="menu">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="project.html">Project</a>
-            <a href="#">Contact</a>
+
+
+            <div class="menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="project.html">Project</a>
+                <a href="#">Contact</a>
+            </div>
+        </nav>
+        <div class="project-container">
+
+            <!-- CARD 1 -->
+            <div class="project-card">
+
+                <div class="project-image image1">
+
+                    <div class="glow"></div>
+
+                </div>
+
+                <div class="project-content">
+
+                    <h2>shoot love</h2>
+
+                    <p>
+                        Futuristic orbit animation with elegant
+                        dark interface and smooth interaction.
+                    </p>
+
+                    <a href="shoot love.html" class="project-btn">
+                        View Project
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="project-card">
+
+                <div class="project-image image2">
+
+                    <div class="glow blue"></div>
+
+                </div>
+
+                <div class="project-content">
+
+                    <h2>heart</h2>
+
+                    <p>
+                        Minimalist admin dashboard concept
+                        with glassmorphism and clean layout.
+                    </p>
+
+                    <a href="love.html" class="project-btn">
+                        View Project
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="project-card">
+
+                <div class="project-image image3">
+
+                    <div class="glow purple"></div>
+
+                </div>
+
+                <div class="project-content">
+
+                    <h2>i love you</h2>
+
+                    <p>
+                        Elegant music website interface
+                        with smooth floating animation.
+                    </p>
+
+                    <a href="i love you.html" class="project-btn">
+                        View Project
+                    </a>
+
+                </div>
+
+            </div>
+
         </div>
-    </nav>
-    <div class="project-container">
 
-        <!-- CARD 1 -->
-        <div class="project-card">
+        <script>
+            function setupMusic() {
+                const music = document.getElementById('backgroundMusic');
 
-            <div class="project-image image1">
+                const isMusicPlaying = localStorage.getItem('musicPlaying') === 'true';
+                const musicCurrentTime = localStorage.getItem('musicCurrentTime') || 0;
 
-                <div class="glow"></div>
+                if (isMusicPlaying) {
+                    music.currentTime = parseFloat(musicCurrentTime);
+                }
 
-            </div>
+                music.addEventListener('play', () => {
+                    localStorage.setItem('musicPlaying', 'true');
+                });
 
-            <div class="project-content">
+                music.addEventListener('pause', () => {
+                    localStorage.setItem('musicPlaying', 'false');
+                });
 
-                <h2>shoot love</h2>
+                setInterval(() => {
+                    localStorage.setItem('musicCurrentTime', music.currentTime);
+                }, 1000);
 
-                <p>
-                    Futuristic orbit animation with elegant
-                    dark interface and smooth interaction.
-                </p>
+                document.addEventListener('click', function startMusic() {
+                    music.play().catch(error => {
+                        console.log('Autoplay prevented', error);
+                    });
+                    document.removeEventListener('click', startMusic);
+                });
+            }
 
-                <a href="shoot love.html" class="project-btn">
-                    View Project
-                </a>
+            document.addEventListener('DOMContentLoaded', setupMusic);
+        </script>
 
-            </div>
+        <audio id="backgroundMusic" loop>
+            <source src="musik.mp4" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
 
-        </div>
-
-        <!-- CARD 2 -->
-        <div class="project-card">
-
-            <div class="project-image image2">
-
-                <div class="glow blue"></div>
-
-            </div>
-
-            <div class="project-content">
-
-                <h2>heart</h2>
-
-                <p>
-                    Minimalist admin dashboard concept
-                    with glassmorphism and clean layout.
-                </p>
-
-                <a href="love.html" class="project-btn">
-                    View Project
-                </a>
-
-            </div>
-
-        </div>
-
-        <!-- CARD 3 -->
-        <div class="project-card">
-
-            <div class="project-image image3">
-
-                <div class="glow purple"></div>
-
-            </div>
-
-            <div class="project-content">
-
-                <h2>i love you</h2>
-
-                <p>
-                    Elegant music website interface
-                    with smooth floating animation.
-                </p>
-
-                <a href="i love you.html" class="project-btn">
-                    View Project
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <script>
-document.addEventListener("click", function () {
-  document.getElementById("backgroundMusic").play();
-}, { once: true });
-</script>
-
-<audio id="backgroundMusic" loop>
-  <source src="musik.mp4" type="audio/mp4">
-</audio>
-
+    </body>
 </section>
 <script src="project.js"></script>

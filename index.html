@@ -1,110 +1,147 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Satriya</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="index.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satriya</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
 
 
 </head>
+
 <body>
 
-<nav>
-<div class="logo">aousmawes<span>.</span></div>
+    <nav>
+        <div class="logo">aousmawes<span>.</span></div>
 
-<div class="menu">
-<a href="#">Home</a>
-<a href="about.html">About</a>
-<a href="project.html">Project</a>
-<a href="#">Contact</a>
-</div>
-</nav>
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="about.html">About</a>
+            <a href="project.html">Project</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
 
-<section class="hero">
+    <section class="hero">
 
-<div class="left">
+        <div class="left">
 
-<div class="small">Halo, Saya</div>
+            <div class="small">Halo, Saya</div>
 
-<h1>
-<span class="typing" id="typing"></span>
-</h1>
+            <h1>
+                <span class="typing" id="typing"></span>
+            </h1>
 
-<p class="desc">
-WELCOME TO MY WEBSITE,
-SEORANG PEMUDA YANG TERUS
-BERKEMBANG DAN MENGEJAR MIMPI.
-</p>
+            <p class="desc">
+                WELCOME TO MY WEBSITE,
+                SEORANG PEMUDA YANG TERUS
+                BERKEMBANG DAN MENGEJAR MIMPI.
+            </p>
 
-<div class="buttons">
-<a href="https://wa.me" class="btn">WHATSAPP</a>
-<a href="https://www.instagram.com/satbichzz?igsh=MW5xN2pvNGpvcW1tdg==" class="btn">INSTAGRAM</a>
-<a href="https://youtu.be/OT5msu-dap8?si=i6_hlGdP_R-Xtpe1" class="btn">YOUTUBE</a>
+            <div class="buttons">
+                <a href="https://wa.me" class="btn">WHATSAPP</a>
+                <a href="https://www.instagram.com/satbichzz?igsh=MW5xN2pvNGpvcW1tdg==" class="btn">INSTAGRAM</a>
+                <a href="https://youtu.be/OT5msu-dap8?si=i6_hlGdP_R-Xtpe1" class="btn">YOUTUBE</a>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-<div class="right">
+        <div class="right">
 
-<div class="sun"></div>
+            <div class="sun"></div>
 
-<div class="orbit orbit1">
-<div class="planet"></div>
-</div>
+            <div class="orbit orbit1">
+                <div class="planet"></div>
+            </div>
 
-<div class="orbit orbit2">
-<div class="planet"></div>
-</div>
+            <div class="orbit orbit2">
+                <div class="planet"></div>
+            </div>
 
-<div class="orbit orbit3">
-<div class="planet"></div>
-</div>
+            <div class="orbit orbit3">
+                <div class="planet"></div>
+            </div>
 
 
 
-</div>
+        </div>
 
-</section>
+    </section>
 
-<section class="about">
+    <section class="about">
 
-<h2 class="title">Welcome </h2>
+        <h2 class="title">Welcome </h2>
 
-<div class="cards">
+        <div class="cards">
 
-<div class="card">
-<h3>Developer</h3>
-<p>VOLTARIS INOVATION DEVELOPER.</p>
-</div>
+            <div class="card">
+                <h3>Developer</h3>
+                <p>VOLTARIS INOVATION DEVELOPER.</p>
+            </div>
 
-<div class="card">
-<h3>UI Design</h3>
-<p>Desain clean, premium, dan smooth animation.</p>
-</div>
+            <div class="card">
+                <h3>UI Design</h3>
+                <p>Desain clean, premium, dan smooth animation.</p>
+            </div>
 
-<div class="card">
-<h3>Technology</h3>
-<p>Suka dunia teknologi, AI, dan gaming modern.</p>
-</div>
+            <div class="card">
+                <h3>Technology</h3>
+                <p>Suka dunia teknologi, AI, dan gaming modern.</p>
+            </div>
 
-</div>
+        </div>
 
-</section>
+    </section>
 
-<script 
-src="index.js">
+    <script src="index.js">
 
-</script>
+    </script>
 
-<audio id="music" loop>
-  <source src="musik.mp4" type="audio/mp4">
-</audio>
+    <script>
+        function setupMusic() {
+            const music = document.getElementById('backgroundMusic');
 
+            const isMusicPlaying = localStorage.getItem('musicPlaying') === 'true';
+            const musicCurrentTime = localStorage.getItem('musicCurrentTime') || 0;
+
+            if (isMusicPlaying) {
+                music.currentTime = parseFloat(musicCurrentTime);
+            }
+
+            music.addEventListener('play', () => {
+                localStorage.setItem('musicPlaying', 'true');
+            });
+
+            music.addEventListener('pause', () => {
+                localStorage.setItem('musicPlaying', 'false');
+            });
+
+            setInterval(() => {
+                localStorage.setItem('musicCurrentTime', music.currentTime);
+            }, 1000);
+
+            document.addEventListener('click', function startMusic() {
+                music.play().catch(error => {
+                    console.log('Autoplay prevented', error);
+                });
+                document.removeEventListener('click', startMusic);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', setupMusic);
+    </script>
+
+    <audio id="backgroundMusic" loop>
+        <source src="musik.mp4" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
 </body>
+
 </html>
