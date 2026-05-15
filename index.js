@@ -1,4 +1,4 @@
-const text = "Satriya.";
+const text = "Satriya";
 let index = 0;
 
 function ketik() {
