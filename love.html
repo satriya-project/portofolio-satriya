@@ -11,10 +11,15 @@
     <canvas id="alx"></canvas>
     <script src="love.js"></script>
 
-<audio id="backgroundMusic" loop>
-    <source src="musik.mp4" type="audio/mpeg">
-    Your browser does not support the audio element.
+<script>
+document.addEventListener("click", function () {
+  document.getElementById("backgroundMusic").play();
+}, { once: true });
 </script>
+
+<audio id="backgroundMusic" loop>
+  <source src="musik.mp4" type="audio/mp4">
+</audio>
 
 </body>
 </html>
