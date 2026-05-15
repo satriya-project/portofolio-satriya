@@ -112,15 +112,28 @@ src="about.js">
 
 </script>
 
-<script>
-document.addEventListener("click", function () {
-  document.getElementById("backgroundMusic").play();
-}, { once: true });
-</script>
-
-<audio id="backgroundMusic" loop>
+<audio id="music" loop>
   <source src="musik.mp4" type="audio/mp4">
 </audio>
+
+<script>
+const music = document.getElementById("music");
+
+// lanjutkan posisi kalau ada
+if (localStorage.getItem("musicTime")) {
+  music.currentTime = localStorage.getItem("musicTime");
+}
+
+// simpan posisi tiap detik
+setInterval(() => {
+  localStorage.setItem("musicTime", music.currentTime);
+}, 1000);
+
+// play saat klik
+document.addEventListener("click", () => {
+  music.play();
+}, { once: true });
+</script>
 
 </body>
 
