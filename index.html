@@ -105,24 +105,6 @@ src="index.js">
   <source src="musik.mp4" type="audio/mp4">
 </audio>
 
-<script>
-const music = document.getElementById("music");
-
-// lanjutkan posisi kalau ada
-if (localStorage.getItem("musicTime")) {
-  music.currentTime = localStorage.getItem("musicTime");
-}
-
-// simpan posisi tiap detik
-setInterval(() => {
-  localStorage.setItem("musicTime", music.currentTime);
-}, 1000);
-
-// play saat klik
-document.addEventListener("click", () => {
-  music.play();
-}, { once: true });
-</script>
 
 </body>
 </html>
