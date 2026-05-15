@@ -118,6 +118,7 @@ body {
 }
 
 @keyframes u {
+
   35%,
   50.5%,
   100% {
@@ -125,6 +126,7 @@ body {
     visibility: hidden;
     opacity: 0;
   }
+
   36%,
   50% {
     visibility: visible;
@@ -134,6 +136,7 @@ body {
 }
 
 @keyframes heart {
+
   0%,
   17.5% {
     position: absolute;
